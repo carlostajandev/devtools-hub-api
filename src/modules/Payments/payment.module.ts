@@ -10,9 +10,10 @@ import { GetPaymentsByUserUseCase } from './application/use-cases/get-payments-b
 import { PaymentController } from './infrastructure/controllers/payment.controller';
 import { UsersModule } from '../user/user.module';
 import { SubscriptionsModule } from '../subscriptions/subscription.module';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([PaymentEntity]), UsersModule, SubscriptionsModule],
+  imports: [TypeOrmModule.forFeature([PaymentEntity]), UsersModule, SubscriptionsModule, NotificationsModule],
   controllers: [PaymentController],
   providers: [
     { provide: 'PaymentRepository', useClass: PaymentRepositoryImpl },
