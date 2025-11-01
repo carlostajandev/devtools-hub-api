@@ -1,33 +1,29 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
-import { CreatePlanUseCase } from '../../application/use-cases/create-plan.use-case';
-import { PlanRepository } from '../../domain/repositories/plan.repository';
+import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
+import { PlanService } from '../../application/services/plan.service';
 import { PlanEntity } from '../../domain/entities/plan.entity';
 
 @Controller('plans')
 export class PlanController {
-  constructor(
-    private readonly createPlan: CreatePlanUseCase,
-    private readonly planRepository: PlanRepository,
-  ) {}
+  constructor(private readonly planService: PlanService) {}
 
   @Get('all')
   async findAll(): Promise<PlanEntity[]> {
-    return this.planRepository.findAll();
+    return this.planService.findAll();
   }
 
   @Post('create')
-  async create(@Body() body): Promise<PlanEntity> {
-    return this.createPlan.execute(body);
+  async create(@Body() body: Partial<PlanEntity>): Promise<PlanEntity> {
+    return this.planService.create(body);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: number): Promise<PlanEntity | null> {
-    return this.planRepository.findById(id);
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body: Partial<PlanEntity>): Promise<PlanEntity> {
+    return this.planService.update(Number(id), body);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: number): Promise<void> {
-    return this.planRepository.delete(id);
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.planService.remove(Number(id));
   }
 }

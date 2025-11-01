@@ -1,11 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { PlanRepository } from '../../domain/repositories/plan.repository';
 import { PlanEntity } from '../../domain/entities/plan.entity';
 
 @Injectable()
 export class CreatePlanUseCase {
-  constructor(private readonly planRepository: PlanRepository) {}
+  constructor(
+    @Inject('PlanRepository') // 👈 AQUI está el cambio CLAVE
+    private readonly planRepository: PlanRepository,
+  ) {}
 
   async execute(data: Partial<PlanEntity>): Promise<PlanEntity> {
     const plan = new PlanEntity();
