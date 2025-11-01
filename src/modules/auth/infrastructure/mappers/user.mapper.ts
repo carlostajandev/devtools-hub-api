@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { UserEntity } from "../../../user/domain/user.entity";
 import { RegisterDto } from "../../presentation/dto/register.dto";
 

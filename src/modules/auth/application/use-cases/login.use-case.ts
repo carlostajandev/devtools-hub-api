@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, UnauthorizedException, Inject } from "@nestjs/common";
 import * as bcrypt from "bcrypt";
 import { LoginDto } from "../../presentation/dto/login.dto";
