@@ -7,13 +7,14 @@ import { databaseConfig } from "./config/database.config";
 import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/user/user.module";
 import { PlansModule } from "./modules/plans/plans.module";
+import { SubscriptionsModule } from "./modules/subscriptions/subscription.module";
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     //RouterModule.forRoutes(routes),
     TypeOrmModule.forRootAsync({ useFactory: databaseConfig }),
-    AuthModule, UsersModule, PlansModule
+    AuthModule, UsersModule, PlansModule, SubscriptionsModule
   ],
 })
 export class AppModule {}
