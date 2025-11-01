@@ -8,13 +8,14 @@ import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/user/user.module";
 import { PlansModule } from "./modules/plans/plans.module";
 import { SubscriptionsModule } from "./modules/subscriptions/subscription.module";
+import { PaymentsModule } from "./modules/Payments/payment.module";
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     //RouterModule.forRoutes(routes),
     TypeOrmModule.forRootAsync({ useFactory: databaseConfig }),
-    AuthModule, UsersModule, PlansModule, SubscriptionsModule
+    AuthModule, UsersModule, PlansModule, SubscriptionsModule, PaymentsModule
   ],
 })
 export class AppModule {}
