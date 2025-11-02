@@ -19,3 +19,7 @@ cmds = [
 
 [start]
 cmd = "pnpm run start:prod"
+
+# Agregar estas líneas para asegurar crypto
+[environment]
+NODE_OPTIONS = "--experimental-global-webcrypto"
