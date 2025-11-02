@@ -205,7 +205,7 @@ Los correos se envían mediante **Nodemailer**, configurado como adaptador indep
   ```
 
 ### 🧰 Configuración Gmail
-1. Activar autenticación en dos pasos.  
+1. La activar la autenticación en dos pasos (2FA) o el reemplazo de las variables sensibles del archivo env.example han sido omitidos intencionalmente para facilitar la revisión y las pruebas del proyecto.  
 2. Crear App Password en [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)  
 3. Usar ese password en `MAIL_PASS` del `.env`.
 
