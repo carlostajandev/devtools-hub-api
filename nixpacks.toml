@@ -1,7 +1,7 @@
 [phases.setup]
 nixPkgs = [
-    "nodejs-18.x",
-    "python3",
+    "nodejs-18_x",
+    "python3", 
     "python3Packages.pip",
     "gcc"
 ]
