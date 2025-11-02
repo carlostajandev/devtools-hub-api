@@ -1,7 +1,14 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "pnpm run build"
+    "buildCommand": "pnpm run build",
+    "nixpacksConfig": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["nodejs-18.x", "python3", "gcc"]
+        }
+      }
+    }
   },
   "deploy": {
     "startCommand": "pnpm run start:prod",

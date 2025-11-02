@@ -1,0 +1,20 @@
+[phases.setup]
+nixPkgs = [
+    "nodejs-18.x",
+    "python3",
+    "python3Packages.pip",
+    "gcc"
+]
+
+[phases.install]
+cmds = [
+    "pnpm i --frozen-lockfile"
+]
+
+[phases.build]
+cmds = [
+    "pnpm run build"
+]
+
+[start]
+cmd = "pnpm run start:prod"
