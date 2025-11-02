@@ -27,7 +27,7 @@ El sistema permite gestionar usuarios, autenticación, planes, suscripciones, pa
 ## 📦 Requisitos
 
 - Node.js ≥ **v18**
-- npm o pnpm
+- pnpm
 - Docker y Docker Compose (opcional, para entorno completo)
 - Cuenta Gmail con **App Password** (para enviar correos)
 
@@ -41,8 +41,6 @@ git clone -b develop https://github.com/carlostajandev/devtools-hub-api.git
 cd devtools-hub-api
 
 # 2️⃣ Instalar dependencias
-npm install
-# o
 pnpm install
 
 # 3️⃣ Configurar las variables de entorno
@@ -82,21 +80,12 @@ docker-compose logs -f api
 Ejemplo de configuración:
 
 ```bash
-# General
-NODE_ENV=development
-PORT=3000
-
 # Database
-DB_TYPE=postgres
 DB_HOST=localhost
 DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=postgres
-DB_DATABASE=devtools_hub
-
-# JWT
-JWT_SECRET=super_secret_key
-JWT_EXPIRES_IN=3600s
+DB_USER=postgres
+DB_PASS=postgres
+DB_NAME=devtools_hub
 
 # Mail (Gmail con App Password)
 MAIL_HOST=smtp.gmail.com
@@ -105,8 +94,6 @@ MAIL_USER=tu_correo@gmail.com
 MAIL_PASS=tu_app_password
 MAIL_FROM="DevToolsHub <tu_correo@gmail.com>"
 ```
-
-> ⚠️ **Importante:** No subas el archivo `.env` al repositorio.
 
 ---
 
@@ -119,11 +106,11 @@ Una vez levantado el proyecto:
 
 Swagger incluye todos los módulos:
 - Auth  
-- Users  
-- Plans  
-- Subscriptions  
-- Payments  
-- Notifications  
+- User  
+- Plan
+- Subscription 
+- Payment 
+- Notification 
 
 Puedes probar los endpoints directamente desde la interfaz web.
 
@@ -134,6 +121,7 @@ Puedes probar los endpoints directamente desde la interfaz web.
 Puedes importar la colección completa desde este enlace:
 
 👉 [**DevToolsHub API – Postman Collection**](https://.postman.co/workspace/My-Workspace~8c4dcd28-bbe9-47a6-8c71-41bdf5b10733/collection/16301651-d9172550-b4a9-477b-ba32-7d311adf397b?action=share&creator=16301651)
+    **Postman Collection** Hib.postman_collection.json - https://github.com/carlostajandev/devtools-hub-api/blob/develop/Hib.postman_collection.json
 
 Flujo sugerido para probar:
 1. `POST /api/auth/register` → Crear usuario  
@@ -248,14 +236,6 @@ Los correos se envían mediante **Nodemailer**, configurado como adaptador indep
   Flujo completo de registro → plan → suscripción → pago → confirmación → correo.
 
 ---
-
-## ⚠️ Limitaciones y mejoras futuras
-
-- Integrar pasarela de pagos real (Stripe, PayPal).  
-- Implementar roles y permisos (admin vs user).  
-- Crear migraciones con TypeORM.  
-- Añadir rate limiting y cache (Redis).  
-- Desplegar CI/CD en GitHub Actions.  
 
 ---
 
