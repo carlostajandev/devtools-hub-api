@@ -243,12 +243,13 @@ Los correos se envían mediante **Nodemailer**, configurado como adaptador indep
 
 | Tarea | Tiempo estimado |
 |-------|------------------|
-| Diseño de arquitectura y setup | 6 h |
-| Implementación Auth, Users | 6 h |
-| Plans, Subscriptions, Payments | 8 h |
-| Notifications (Nodemailer) | 3 h |
+| Diseño de arquitectura y setup | 3 h |
+| Implementación Auth, Users | 2 h |
+| Plans, Subscriptions, Payments | 3 h |
+| Notifications (Nodemailer) | 1 h |
 | Documentación (Swagger, README) | 2 h |
-| **Total** | **~25 h** |
+| Deploy (Railway) |3 h|
+| **Total** | **~15 h** |
 
 ---
 
