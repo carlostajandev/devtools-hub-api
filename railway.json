@@ -1,10 +1,10 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "npm run build"
+    "buildCommand": "pnpm run build"
   },
   "deploy": {
-    "startCommand": "npm run start:prod",
+    "startCommand": "pnpm run start:prod",
     "restartPolicyType": "ON_FAILURE"
   }
 }
