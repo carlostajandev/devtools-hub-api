@@ -3,12 +3,13 @@ nixPkgs = [
     "nodejs-18_x",
     "python3",
     "python3Packages.pip",
-    "gcc",
-    "nodePackages.pnpm"
+    "gcc"
 ]
 
 [phases.install]
 cmds = [
+    "corepack enable",
+    "corepack prepare pnpm@latest --activate",
     "pnpm i --frozen-lockfile"
 ]
 
@@ -18,8 +19,4 @@ cmds = [
 ]
 
 [start]
-cmd = "pnpm run start:prod"
-
-# Agregar estas líneas para asegurar crypto
-[environment]
-NODE_OPTIONS = "--experimental-global-webcrypto"
+cmd = "node dist/main"

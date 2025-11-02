@@ -1,5 +1,22 @@
 /* eslint-disable prettier/prettier */
-import './crypto-polyfill';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable prettier/prettier */
+// main.ts - POLYFILL MÁS ROBUSTO
+import { webcrypto } from 'crypto';
+
+// Verifica y completa el objeto crypto global de manera segura
+const globalCrypto = (global as any).crypto;
+if (!globalCrypto) {
+  (global as any).crypto = webcrypto;
+} else {
+  // Completa métodos faltantes sin sobreescribir todo el objeto
+  if (!globalCrypto.randomUUID) {
+    globalCrypto.randomUUID = webcrypto.randomUUID;
+  }
+  if (!globalCrypto.getRandomValues) {
+    globalCrypto.getRandomValues = webcrypto.getRandomValues;
+  }
+}
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
